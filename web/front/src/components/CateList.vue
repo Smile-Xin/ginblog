@@ -16,9 +16,6 @@
         @click="$router.push(`/article/detail/${item.ID}`)"
       >
         <v-row no-gutters class="d-flex align-center">
-          <v-avatar class="ma-3 hidden-sm-and-down" size="125" tile>
-            <v-img :src="item.img"></v-img>
-          </v-avatar>
           <v-col>
             <v-card-title>
               <v-chip color="purple" outlined label class="mr-3 white--text">{{

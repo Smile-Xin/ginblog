@@ -10,13 +10,13 @@
         </v-app-bar-nav-icon>
       </v-toolbar-title> -->
 
-      <v-tabs dark center-active centered class="hidden-sm-and-down">
-        <v-tab @click="$router.push('/')">首页</v-tab>
+      <v-tabs dark center-active centered class="hidden-sm-and-down" key="$route.fullPath" v-model="selectedTab">
+        <v-tab to="/index">首页</v-tab>
         <v-tab
           v-for="item in cateList"
           :key="item.ID"
+          :to="`/category/${item.ID}`"
           text
-          @click="gotoCate(item.ID)"
         >{{ item.name }}</v-tab>
       </v-tabs>
 
@@ -33,7 +33,7 @@
           dark
           append-icon="mdi-text-search"
           v-model="searchName"
-          @change="searchTitle(searchName)"
+          @click:append="searchTitle(searchName)"
         ></v-text-field>
       </v-responsive>
 
@@ -145,6 +145,8 @@
 export default {
   data() {
     return {
+      // 选择的tab
+      selectedTab:null,
       drawer: false,
       group: null,
       valid: true,
@@ -205,6 +207,7 @@ export default {
     // 查找文章标题
     searchTitle(title) {
       if (title.length == 0) return this.$message.error('你还没填入搜索内容哦')
+      this.selectedTab = 'index'
       this.$router.push(`/search/${title}`)
     },
 

@@ -76,7 +76,7 @@ func GetArticle(title string, pageSize int, pageNum int) (articleList []model.Ar
 		// 符合的文章数
 		db.Where("title like ?", "%"+title+"%").Find(&articleList).Count(&total)
 		// 按照title查找文章
-		err := db.Where("title like ?", "%"+title+"%").Limit(pageSize).Offset((pageNum - 1) * pageNum).Find(&articleList).Error
+		err := db.Preload("Category").Where("title like ?", "%"+title+"%").Limit(pageSize).Offset((pageNum - 1) * pageNum).Find(&articleList).Error
 		if err != nil {
 			fmt.Printf("get article fail:%s", err)
 			code = errmsg.DATABASE_WRITE_FAIL

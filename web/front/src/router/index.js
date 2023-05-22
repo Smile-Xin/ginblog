@@ -13,14 +13,15 @@ const Search = () =>
 Vue.use(VueRouter)
 
 //获取原型对象上的push函数
-const originalPush = VueRouter.prototype.push
+// const originalPush = VueRouter.prototype.push
 //修改原型对象中的push方法
-VueRouter.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err)
-}
+// VueRouter.prototype.push = function push(location) {
+//   return originalPush.call(this, location).catch(err => err)
+// }
 
 const routes = [
   { path: '/', component: ArticleList, meta: { title: '欢迎来到GinBlog' } },
+  { path: '/index', component: ArticleList, meta: { title: '欢迎来到GinBlog' } },
   {
     path: '/article/detail/:id',
     component: Detail,
@@ -42,8 +43,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  // mode: 'history',
+  // base: process.env.BASE_URL,
   routes
 })
 

@@ -14,17 +14,11 @@
         @click="$router.push(`/article/detail/${item.ID}`)"
       >
         <v-row no-gutters class="d-flex align-center">
-          <v-col class="d-flex justify-center align-center ma-3" cols="1">
-            <v-img max-height="100" max-width="100" :src="item.img"></v-img>
-          </v-col>
           <v-col>
             <v-card-title>
-              <v-chip
-                color="green darken-2"
-                outlined
-                label
-                class="mr-3 white--text"
-              >{{ item.Category.name }}</v-chip>
+              <v-chip color="purple" outlined label class="mr-3 white--text">{{
+                item.Category.name
+              }}</v-chip>
               <div>{{ item.title }}</div>
             </v-card-title>
             <v-card-subtitle class="mt-1" v-text="item.desc"></v-card-subtitle>
@@ -32,7 +26,9 @@
             <v-card-text class="d-flex align-center">
               <div class="d-flex align-center">
                 <v-icon class="mr-1" small>{{ 'mdi-calendar-month' }}</v-icon>
-                <span>{{ item.CreatedAt | dateformat('YYYY-MM-DD HH:MM') }}</span>
+                <span>{{
+                  item.CreatedAt | dateformat('YYYY-MM-DD HH:MM')
+                }}</span>
               </div>
               <div class="mx-4 d-flex align-center">
                 <v-icon class="mr-1" small>{{ 'mdi-comment' }}</v-icon>
